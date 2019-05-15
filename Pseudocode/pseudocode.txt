@@ -9,6 +9,7 @@ save file is deleted
 *********SAVES.TXT*********
 To be decided after game is made
 
+
 *********SCOREBOARD.TXT*********
 <name> -- <score>
 ex. "Bobb -- 321"
@@ -19,20 +20,23 @@ ex. "Bobb -- 321"
 Reads Scoreboard.txt and stores the data into an array
 Reads Saves.txt and stores all file names into an array
 
-Menu housekeeping and then display menu
-Menu Choices
-1. New Game
-2. Load Game
-3. Scoreboard
-4. Quit Game
+main method
+    *********ON START*********
 
+    Reads Scoreboard.txt and stores the data into an array
+    Reads Saves.txt and stores all file names into an array
 
-*********SCOREBOARD*********
-Scores are already kept inside of an array
+    Menu housekeeping and then display menu
+    Menu Choices
+    1. New Game
+    2. Load Game
+    3. Scoreboard
+    4. Quit Game
 
-Scores should already be sorted inside of text file
+    *********SCOREBOARD*********
+    Scores are already kept inside of an array
 
-
+    Scores should already be sorted inside of text file
 
 
 *********QUIT GAME*********
