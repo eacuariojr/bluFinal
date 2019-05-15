@@ -4,27 +4,27 @@ save file is deleted
 
 
 
+main method
+    *********ON START*********
 
-*********ON START*********
+    Reads Scoreboard.txt and stores the data into an array
+    Reads Saves.txt and stores all file names into an array
 
-Reads Scoreboard.txt and stores the data into an array
-Reads Saves.txt and stores all file names into an array
-
-Menu housekeeping and then display menu
-Menu Choices
-1. New Game
-2. Load Game
-3. Scoreboard
-4. Quit Game
-
-
-*********SCOREBOARD*********
-Scores are already kept inside of an array
-
-Scores should already be sorted inside of text file
+    Menu housekeeping and then display menu
+    Menu Choices
+    1. New Game
+    2. Load Game
+    3. Scoreboard
+    4. Quit Game
 
 
+    *********SCOREBOARD*********
+    Scores are already kept inside of an array
+
+    Scores should already be sorted inside of text file
 
 
-*********QUIT GAME*********
-The only writing into a file occurs when user quits program
+
+
+    *********QUIT GAME*********
+    The only writing into a file occurs when user quits program

@@ -11,6 +11,6 @@ public class BluFinal
 {
     public static void main(String[] args)
     {
-        System.out.print("Hello final project!");
+        //System.out.print("Hello final project!");
     }
 }
