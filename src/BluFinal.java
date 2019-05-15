@@ -13,4 +13,13 @@ public class BluFinal
     {
         //System.out.print("Hello final project!");
     }
+
+    private static void mainMenu()
+    {
+        System.out.println("*****MAIN MENU*****");
+        System.out.println("1.New Game");
+        System.out.println("2.Load Game");
+        System.out.println("3.Score Board");
+        System.out.println("4.Quit");
+    }
 }
