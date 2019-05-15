@@ -6,7 +6,7 @@
     Credit: none
 */
 //----------------------------------------------------------------------------------------------------------------------
-import java.util.Scanner; //import Scanner class
+import java.util.Scanner;
 public class BluFinal
 {
     public static void main(String[] args)

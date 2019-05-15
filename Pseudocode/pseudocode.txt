@@ -2,7 +2,23 @@ Roguelike game -- player cannot revert to previous save
 after player loses game, score is added to leaderboard and
 save file is deleted
 
+**************************************
+*********TEXT FILE FORMATTING*********
+**************************************
 
+*********SAVES.TXT*********
+To be decided after game is made
+
+
+*********SCOREBOARD.TXT*********
+<name> -- <score>
+ex. "Bobb -- 321"
+
+**************************
+*********ON START*********
+**************************
+Reads Scoreboard.txt and stores the data into an array
+Reads Saves.txt and stores all file names into an array
 
 main method
     *********ON START*********
@@ -17,14 +33,12 @@ main method
     3. Scoreboard
     4. Quit Game
 
-
     *********SCOREBOARD*********
     Scores are already kept inside of an array
 
     Scores should already be sorted inside of text file
 
 
+*********QUIT GAME*********
+The only writing into a file occurs when user quits program
 
-
-    *********QUIT GAME*********
-    The only writing into a file occurs when user quits program
