@@ -9,5 +9,8 @@
 import java.util.Scanner; //import Scanner class
 public class BluFinal
 {
-
+    public static void main(String[] args)
+    {
+        System.out.print("Hello final project!");
+    }
 }
