@@ -1,0 +1,14 @@
+GAME CLASS
+    Instance variables:
+        int daysPassed
+        maybe Strings/doubles for world state
+
+CHARACTER CLASS
+    instance variables:
+        Three int instance variables:
+            strength, speed and endurance
+        double variable for health
+
+    Instance variables:
+        Character arraylist capped at 3
+        int instance variables for gold
