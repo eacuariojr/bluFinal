@@ -15,7 +15,7 @@ Read selected file
 Load game data based on what was saved
 
 **************************
-*********GAMEPLAY*********
+***********GAME***********
 **************************
 Turn base party management
 All of it is on Victor's notebook
