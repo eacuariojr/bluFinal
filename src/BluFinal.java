@@ -19,7 +19,9 @@ public class BluFinal //start BluFinal class
 
         switch(choice) //start switch statement
         {
-
+            case 1:
+                System.out.println("Hello!");
+                break;
         } //end switch statement
     } //end main method
 
