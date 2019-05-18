@@ -15,7 +15,8 @@ GAME CLASS
         A full constructor for loading a game
         Loads game class and recreates other objects that were in the game
         (consider making a constructor assister?):
-            Maybe it accepts a Scanner at the location of the save file
+            Maybe it accepts a Scanner at the location of the save file as a parameter
+            then loads party which then loads each character
 
 
 
@@ -28,6 +29,7 @@ GAME CLASS
 
         A method(s) that controls the menus:
             There are many menus so there might be many different menu methods.
+            Includes helper methods for the menus
 
         end game saves all the data (including other object's instance variables):
             endGame wraps everything up and uses the debug method below to
@@ -63,7 +65,7 @@ CHARACTER CLASS
     Three constructors:
         A single string for new game player character
         A single double for tavern recruits (the multiplier for stats)
-        a full constructor for loading characters (includes all instance variables)
+        a constructor for loading characters (includes all instance variables)
 
     methods:
         A method that handles giving an attack:
@@ -98,7 +100,7 @@ PARTY CLASS
         int instance variables for gold
 
     Two constructors:
-        A full constructor for loading game
+        A constructor for loading game (takes a scanner as a parameter)
         A constructor that takes one parameter that creates a
         random enemy party (based on parameter given)
 
