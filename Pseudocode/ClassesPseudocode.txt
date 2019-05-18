@@ -68,6 +68,9 @@ CHARACTER CLASS
         a constructor for loading characters (includes all instance variables)
 
     methods:
+        Method(s) to generate a random character:
+            Should be able to accept a double in order to scale their stats
+
         A method that handles giving an attack:
             creates an attack loosely based on health, and strength stats
             A projectile object is made containing all the required info.
@@ -99,10 +102,11 @@ PARTY CLASS
         Character arraylist capped at 3
         int instance variables for gold
 
-    Two constructors:
+    Three constructors:
+        Constructor with one Character as a parameter (when creating new game)
         A constructor for loading game (takes a scanner as a parameter)
-        A constructor that takes one parameter that creates a
-        random enemy party (based on parameter given)
+        A constructor that takes a string that creates a
+        random enemy party
 
     methods:
         A way to check gold, add gold and to lose gold:
