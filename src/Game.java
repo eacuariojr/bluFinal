@@ -32,9 +32,9 @@ public class Game
         //asks for confirmation until a name is confirmed
         while (!userConfirm)
         {
-            System.out.printf("Your starting character will be named %s", saveName);
+            System.out.printf("Your starting character will be named %s.", saveName);
             //asks user for confirmation
-            System.out.print("Is that okay? (Y) or (N): ");
+            System.out.print(" Is that okay? (Y) or (N): ");
             userResponse = input.next().toUpperCase().charAt(0);
 
             //evaluates user response
