@@ -14,7 +14,7 @@ import java.util.InputMismatchException;
 
 public class BluFinal //start BluFinal class
 {
-    static Scanner input = new Scanner(System.in);
+    private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) //start main method
     {
@@ -34,10 +34,10 @@ public class BluFinal //start BluFinal class
                     switch (choice) //start switch statement
                     {
                         case 1:
-                            System.out.println("Test 1");
+                            newGame();
                             break;
                         case 2:
-                            System.out.println("Test 2");
+                            loadGame();
                             break;
                         case 3:
                             leaderboard();
@@ -76,6 +76,17 @@ public class BluFinal //start BluFinal class
         return choice;
     } //end getChoice method
 
+    private static void newGame() //start newGame method
+    {
+        Game newGame = new Game(); //create a new game instance
+        newGame.start(); //call the start method from Game class
+    } //end newGame method
+
+    private static void loadGame() //start loadGame method
+    {
+
+    } //end loadGame method
+
     private static void leaderboard() //start leaderboard method
     {
         //open file
@@ -90,7 +101,7 @@ public class BluFinal //start BluFinal class
         {
             Scanner fileStream = new Scanner(myFile); //Scanner reads Scoreboard.txt file instead of user input
 
-            while(fileStream.hasNext())
+            while(fileStream.hasNext()) //read data from file while there is still data to be read
             {
                 String username = fileStream.next();
                 fileStream.next();
