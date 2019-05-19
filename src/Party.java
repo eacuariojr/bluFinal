@@ -53,7 +53,7 @@ public class Party
     {
         String partyData;
 
-        partyData = "Gold -- " + gold + "\n";
+        partyData = "** " + gold + "\n";
         //adds data of every member
         for (int i = 0; i < members.size(); i++)
         {
