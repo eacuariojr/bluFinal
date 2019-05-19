@@ -2,7 +2,7 @@
     Erwin Aquario, Victor Gallardo and Kevin Raya
     May 15, 2019
     BluFinal.java
-    Dependencies: Character.java, Game.java, Party.java
+    Dependencies: Game.java, Party.java, Character.java, Projectile.java
     Credit: none
 */
 //----------------------------------------------------------------------------------------------------------------------
