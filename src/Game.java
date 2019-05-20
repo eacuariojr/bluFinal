@@ -13,7 +13,7 @@ public class Game
 {
     private String saveName;
     private int daysPassed;
-    private final int lastDay = 25; //sets the last day of the game
+    private final int LAST_DAY = 25; //sets the last day of the game
     private Party playerParty;
 
     //****************CONSTRUCTORS****************
@@ -47,7 +47,7 @@ public class Game
                     saveName = input.next();
                     input.nextLine();
                         break;
-                default: System.out.print("Invalid response. Try again.");
+                default: System.out.println("Invalid response. Try again.");
             }
         }
 
@@ -71,7 +71,7 @@ public class Game
     //Game can only start in this way
     public void start()
     {
-
+        System.out.println(writeData());
     }//end method start
 
     private void nextDay()
@@ -84,7 +84,9 @@ public class Game
     {
         String gameData;
 
-        gameData = "&& " + saveName + " && " + daysPassed + "\n";
+        //writes the data sepcific to the game
+        gameData = "&& " + saveName + " -- " + daysPassed + "\n";
+        //then adds data from party
         gameData += playerParty.writeData();
 
         return gameData;

@@ -13,6 +13,7 @@ public class Character
     private int speed;
     private int endurance;
     private double health;
+    private final double MAX_HEALTH = 100;  //for this program, the max health is always 100
     private boolean notIncapacitated;
     private boolean isAlive;
 
@@ -50,6 +51,36 @@ public class Character
 
 
     //****************METHODS****************
+
+    //this method is used when a character attacks another character
+    public void attack(Character target)
+    {
+        //first, creates a projectile
+        Projectile theAttack = new Projectile(this);
+
+        target.takeHit(theAttack);
+    }
+
+    //this method is the only way a character can get damaged (regularly)
+    private void takeHit(Projectile attack)
+    {
+        final double FATAL_MULTI = -0.25;   //the multiplier that sets the threshold before a character dies
+
+        health -= attack.getDamage();
+
+        if (health <= MAX_HEALTH * FATAL_MULTI)
+        {
+            //after character reaches a damage threshold (-25 health), they die
+            this.kill();
+        }
+        else if (health <= 0)
+        {
+            //if character reaches 0 or less health, they get incapacitated
+            notIncapacitated = false;
+        }
+    }
+
+
     public String simplePrint()
     {
         String simplePrint = name + ": " + health + "/100";
@@ -79,12 +110,15 @@ public class Character
     {
         String characterData;
 
-        characterData = name + " -- " + strength + " -- " + speed +
+        characterData = "-- " + name + " -- " + strength + " -- " + speed +
                 " -- " + endurance  + " -- " + health  + " -- " +
                 notIncapacitated  + " -- " + isAlive + "\n";
 
         return characterData;
     }//end method writeData
+
+    //****************RANDOM CHARACTER METHODS****************
+
 
     //****************GETTERS & SETTERS****************
     public String getName()

@@ -52,6 +52,7 @@ PROJECTILE CLASS //created by the character class
         Receives a character and double as a parameter
         to construct the object
 
+
 CHARACTER CLASS
     Instance variables:
         String for character name

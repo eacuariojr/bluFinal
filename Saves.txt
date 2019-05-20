@@ -1,7 +1,7 @@
-&& Javaman && 23
+&& Javaman -- 23
 ** 438
 -- JavaMan -- 42 -- 64 -- 80 -- 78.42 -- true -- true
 -- HumanMan -- 14 -- 8 -- 65 -- 86.23 -- true -- true
-&& EarlyQuitter && 1
+&& EarlyQuitter -- 1
 ** 12
 -- EarlyQuitter -- 20 -- 20 -- 20 -- -12.4 -- false -- true
