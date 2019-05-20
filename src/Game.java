@@ -72,6 +72,11 @@ public class Game
     public void start()
     {
         System.out.println(writeData());
+
+        for (int i = 0; i < 20; i++)
+        {
+            Character bob = new Character(1);
+        }
     }//end method start
 
     private void nextDay()
