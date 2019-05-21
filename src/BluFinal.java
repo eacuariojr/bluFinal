@@ -116,24 +116,18 @@ public class BluFinal //start BluFinal class
                 System.out.println(saveIndex + ". " + saveFiles.get(i));
             }
 
-            boolean validCommand;
+            //puts scanner back at the top of Saves.txt
+            fileStream.close();
+            fileStream = new Scanner(myFile);
 
-            do
-            {
-                validCommand = true;
+            //prompt user for choice of save file
+            System.out.print("\nWhich save file would you like to choose? ");
+            prepLoadScanner(fileStream, CommonMethods.getChoice(saveFiles.size()));
 
-                try
-                {
-                    //prompt user for choice of save file
-                    System.out.print("\nWhich save file would you like to choose? ");
-                    loadGameChoice();
-                }
-                catch(InputMismatchException error) //excpetion thrown if choice is not an int
-                {
-                    System.out.println("Invalid command. Try again:");
-                    validCommand = false;
-                }
-            } while(!validCommand); //while validCommand is not true, loop back up to the top.
+            //creates new game object using the loading constructor
+            Game loadGameFile = new Game(fileStream);
+            loadGameFile.start();
+
         }
         catch(FileNotFoundException error) //if file cannot be found, throw FileNotFoundException
         {
@@ -141,11 +135,21 @@ public class BluFinal //start BluFinal class
         }
     } //end loadGame method
 
-    private static int loadGameChoice() //start loadGameChoice
+    private static void prepLoadScanner(Scanner fileStream, int whichFile) //start prepLoadScanner
     {
-        int saveFileChoice = input.nextInt();
-        return saveFileChoice;
-    } //end loadGameChoice
+        //this method prepares a scanner so it is ready to read a save file
+        int numFilesEncountered = 0;
+        String fileText;
+
+        while(numFilesEncountered < whichFile)
+        {
+            fileText = fileStream.next();
+            if (fileText.equals("&&"))
+            {
+                numFilesEncountered++;
+            }
+        }
+    } //end prepLoadScanner
 
     private static void leaderboard() //start leaderboard method
     {
