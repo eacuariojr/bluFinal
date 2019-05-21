@@ -20,7 +20,7 @@ public class BluFinal //start BluFinal class
     public static void main(String[] args) //start main method
     {
         int choice; //delcare int choice to store user choice
-        boolean validCommand = true; //validCommand set to true if command is int
+        boolean validCommand; //validCommand set to true if command is int
 
         do
         {
@@ -47,7 +47,7 @@ public class BluFinal //start BluFinal class
                             quitGame();
                             break;
                         default:
-                            System.out.println("Invalid command. Try again.");
+                            System.out.println("Invalid command. Try again:");
                             break;
                     } //end switch statement
                 } while(choice != 4);
@@ -56,7 +56,7 @@ public class BluFinal //start BluFinal class
             {
                 input.nextLine(); //clear the rest of the line
                 validCommand = false; //set to false if exception is thrown
-                System.out.println("Invalid command. Try again.");
+                System.out.println("Invalid command. Try again:");
             }
         } while(!validCommand); //do while valid command is not true
     } //end main method
@@ -92,7 +92,7 @@ public class BluFinal //start BluFinal class
         File myFile = new File(filename); //find the relative path to Saves.txt
 
         //read and print data from Saves.txt so users can select a save file
-        System.out.println("~~~~~PRINTING SAVE FILES~~~~~");
+        System.out.println("\n~~~~~PRINTING SAVE FILES~~~~~");
 
         try //try finding and printing the file
         {
@@ -108,16 +108,44 @@ public class BluFinal //start BluFinal class
                 }
             }
 
+            int saveIndex = 0; //makes the save files numbered in the load menu and increments by one every time a save file is added
+
             for(int i = 0; i < saveFiles.size(); i++) //loop that prints save file names
             {
-                System.out.println(saveFiles.get(i));
+                saveIndex++;
+                System.out.println(saveIndex + ". " + saveFiles.get(i));
             }
+
+            boolean validCommand;
+
+            do
+            {
+                validCommand = true;
+
+                try
+                {
+                    //prompt user for choice of save file
+                    System.out.print("\nWhich save file would you like to choose? ");
+                    loadGameChoice();
+                }
+                catch(InputMismatchException error) //excpetion thrown if choice is not an int
+                {
+                    System.out.println("Invalid command. Try again:");
+                    validCommand = false;
+                }
+            } while(!validCommand); //while validCommand is not true, loop back up to the top.
         }
         catch(FileNotFoundException error) //if file cannot be found, throw FileNotFoundException
         {
             System.out.println(error);
         }
     } //end loadGame method
+
+    private static int loadGameChoice() //start loadGameChoice
+    {
+        int saveFileChoice = input.nextInt();
+        return saveFileChoice;
+    } //end loadGameChoice
 
     private static void leaderboard() //start leaderboard method
     {
