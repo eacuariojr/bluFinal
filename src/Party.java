@@ -23,7 +23,7 @@ public class Party
         gold = 100;
         members.add(firstCharacter);
 
-    }
+    } //end newgame constructor
 
     //creates the party based on what's read from the file
     public Party(Scanner fileReader)
@@ -53,7 +53,7 @@ public class Party
             members.add(new Character(charName, strength, speed, endurance,
                                       health, notIncapacitated, isAlive));
         }
-    }
+    } //end loading game constructor
 
     public Party(double statMultiplier)
     {
@@ -68,7 +68,7 @@ public class Party
         {
             members.add(new Character(statMultiplier));
         }
-    }
+    } // end random party constructor
 
     //****************METHODS****************
     public void attackParty(Party opposingParty)

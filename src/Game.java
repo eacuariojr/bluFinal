@@ -6,6 +6,8 @@
     Credit: none
 */
 //----------------------------------------------------------------------------------------------------------------------
+import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game
@@ -71,16 +73,109 @@ public class Game
 
     } //end loading constructor
 
+    //***************************************
     //****************METHODS****************
-
+    //***************************************
     //Game can only start in this way
     public void start()
     {
-        for (int i = 0; i < 20; i++)
+        while (daysPassed < LAST_DAY)
         {
-
+            startDay();
+            nextDay();
         }
+
     }//end method start
+
+    private void startDay()
+    {
+        System.out.println("\n\nIt is day " + (daysPassed + 1) + "\n");
+
+        System.out.println(playerParty.simplePrint());
+
+        printMainMenu();
+
+        switch (getChoice(4))
+        {
+            case 1: trainOption();
+                break;
+            case 2: //explore
+                break;
+            case 3: //recruit
+                break;
+            case 4: System.out.println(playerParty.detailedPrint());
+                    startDay(); //oooooh, recursion!
+                break;
+            default:
+        }
+
+    }//end method startDay
+
+    //****************TRAINING METHODS****************
+    private void trainOption()
+    {
+        printTrainMenu();
+
+        switch (getChoice(4))
+        {
+            case 1: train("Strength");
+                    break;
+            case 2: train("Speed");
+                    break;
+            case 3: train("Endurance");
+                    break;
+            case 4: startDay();
+                    break;
+            //any other outputs from getChoice() is impossible
+        }
+    }//end method trainOption
+
+    private void train(String stat)
+    {
+        //the constants are used to make statements more concise
+        final String STR = "Strength";
+        final String SPD = "Speed";
+        final String END = "Endurance" ;
+
+        //nested if-else-if to evaluate which stat is being modified
+        if(stat.equals(STR))
+        {
+            //this is where we get sad because we can't pass by reference in java :^(
+            for(int i = 0; i < playerParty.getMembers().size(); i++)
+            {
+                playerParty.getMember(i).addStrength(calculateTrainGain());
+            }
+        }
+        else if (stat.equals(SPD))
+        {
+            //this is where we get sad because we can't pass by reference in java :^(
+            for(int i = 0; i < playerParty.getMembers().size(); i++)
+            {
+                playerParty.getMember(i).addSpeed(calculateTrainGain());
+            }
+        }
+        else if (stat.equals(END))
+        {
+            //this is where we get sad because we can't pass by reference in java :^(
+            for(int i = 0; i < playerParty.getMembers().size(); i++)
+            {
+                playerParty.getMember(i).addEndurance(calculateTrainGain());
+            }
+        }
+        else
+        {
+            System.out.println("I think we need to report this to QA.");
+        }
+    }//end method train
+
+    private int calculateTrainGain()
+    {
+        final int MIN_GAIN = 5;
+        final int MAX_GAIN = 13;
+        Random randGen = new Random();
+
+        return randGen.nextInt(MAX_GAIN - MIN_GAIN) + MIN_GAIN;
+    }//end method calculateTrainGain
 
     private void nextDay()
     {
@@ -99,5 +194,65 @@ public class Game
 
         return gameData;
     }//end method writeData
+
+    //****************MENU METHODS****************
+
+    private void printMainMenu()
+    {
+        System.out.println("What action do you take?");
+        System.out.println("1.) Train");
+        System.out.println("2.) Explore");
+        System.out.println("3.) Recruit");
+        System.out.println("4.) Check Status");
+    }//end method printMainMenu
+
+    private void printTrainMenu()
+    {
+        System.out.println("What would you like to train?");
+        System.out.println("1.) Strength");
+        System.out.println("2.) Speed");
+        System.out.println("3.) Endurance");
+        System.out.println("4.) Go Back");
+    }
+
+    private int getChoice(int maxChoice)
+    {
+        //housekeeping
+        int choice = -1;
+        Scanner input = new Scanner(System.in);
+
+        //code to prime loop
+        try
+        {
+            System.out.print("\nEnter your choice : ");
+            choice = input.nextInt();
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.print("Must enter number. ");
+        }
+
+        //loops until there's a choice inside bounds
+        while(choice < 0 || choice > maxChoice)
+        {
+            //prints error message for out of bounds
+            System.out.println("Invalid choice, try again.");
+
+            //catches mismatch errors.
+            try
+            {
+                System.out.print("\nEnter your choice : ");
+                choice = input.nextInt();
+
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.print("Must enter number. ");
+                //the full error message is "Must enter number. Invalid choice, try again."
+            }
+        }
+
+        return choice;
+    }
 
 }

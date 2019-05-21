@@ -215,5 +215,18 @@ public class Character
         isAlive = false;
     }
 
+    public void addStrength(int amountAdded)
+    {
+        strength += amountAdded;
+    }
 
+    public void addSpeed(int amountAdded)
+    {
+        speed += amountAdded;
+    }
+
+    public void addEndurance(int amountAdded)
+    {
+        endurance += amountAdded;
+    }
 }
