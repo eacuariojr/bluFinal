@@ -25,10 +25,9 @@ Reads Scoreboard.txt and stores the data into an array
 Reads Saves.txt and stores all file names into an array
 
 main method
-    *********ON START*********
-
-    Reads Scoreboard.txt and stores the data into an array
-    Reads Saves.txt and stores all file names into an array
+*********ON START*********
+    Houses a switch statement where the menu will live
+    Calls newGame(), loadGame(), leaderboard() and quitGame()
 
     Menu housekeeping and then display menu
     Menu Choices
@@ -37,12 +36,25 @@ main method
     3. Scoreboard
     4. Quit Game
 
-    *********SCOREBOARD*********
-    Scores are already kept inside of an array
+*********NEW GAME*********
+    Starts a new game and and calls Game class
 
+*********LOAD GAME*********
+    Loads players progress where they left off
+    Reads Saves.txt and stores all file names into an array
+    Menu looks like this
+
+    Which game will you load?
+    1. Javaman
+    2. EarlyQuitter
+    3. Bob
+
+*********SCOREBOARD*********
+    Reads Scoreboard.txt and stores the data into an array
+    Scores are already kept inside of an array and stored in Scoreboard.txt
     Scores should already be sorted inside of text file
 
-
 *********QUIT GAME*********
-The only writing into a file occurs when user quits program
+    End program and saves player progress
+    The only writing into a file occurs when user quits program
 

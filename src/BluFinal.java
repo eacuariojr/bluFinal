@@ -8,6 +8,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 //import classes
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
@@ -84,22 +85,52 @@ public class BluFinal //start BluFinal class
 
     private static void loadGame() //start loadGame method
     {
+       ArrayList <String> saveFiles = new ArrayList<>();
 
+        //open file Saves.txt
+        String filename = "Saves.txt"; //create a String variable and initialize it with Saves.txt
+        File myFile = new File(filename); //find the relative path to Saves.txt
+
+        //read and print data from Saves.txt so users can select a save file
+        System.out.println("~~~~~PRINTING SAVE FILES~~~~~");
+
+        try //try finding and printing the file
+        {
+            Scanner fileStream = new Scanner(myFile); //Scanner reads Saves.txt file
+            String fileString; //used to see if fileStream equals "&&"
+
+            while(fileStream.hasNext()) //read file from data while there is still data to be read
+            {
+                fileString = fileStream.next(); //initialize fileString with Scanner
+                if(fileString.equals("&&")) //if fileString equals "&&", add username saveFiles array list
+                {
+                    saveFiles.add(fileStream.next());
+                }
+            }
+
+            for(int i = 0; i < saveFiles.size(); i++) //loop that prints save file names
+            {
+                System.out.println(saveFiles.get(i));
+            }
+        }
+        catch(FileNotFoundException error) //if file cannot be found, throw FileNotFoundException
+        {
+            System.out.println(error);
+        }
     } //end loadGame method
 
     private static void leaderboard() //start leaderboard method
     {
-        //open file
-        String filename = "Scoreboard.txt"; //create String variable with file name
+        //open file Scoreboard.txt
+        String filename = "Scoreboard.txt"; //create String variable and initialize it with Scoreboard.txt
         File myFile = new File(filename); //finds the relative path to Scoreboard.txt
 
         //read and print data from Scoreboard.txt
-        String line;
         System.out.println("~~~~~PRINTING LEADERBOARD~~~~~");
 
         try //try finding and printing the file
         {
-            Scanner fileStream = new Scanner(myFile); //Scanner reads Scoreboard.txt file instead of user input
+            Scanner fileStream = new Scanner(myFile); //Scanner reads Scoreboard.txt file
 
             while(fileStream.hasNext()) //read data from file while there is still data to be read
             {
@@ -114,7 +145,7 @@ public class BluFinal //start BluFinal class
         {
             System.out.println(error);
         }
-    } //end leaderoard method
+    } //end leaderboard method
 
     private static void quitGame() //start quitGame method
     {
