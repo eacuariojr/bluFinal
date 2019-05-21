@@ -1,5 +1,5 @@
 /*
-    Erwin Aquario, Victor Gallardo and Kevin Raya
+    Erwin Aquario, Victor Gallardo
     May 15, 2019
     Game.java
     Dependencies: CommonMethods.java, Character.java, Party.java, Projectile.java
@@ -22,8 +22,6 @@ public class Game
     public Game()
     {
         Scanner input = new Scanner(System.in);
-        boolean userConfirm = false;
-        char userResponse;
         String prompt;
 
         //asks for name of new character
@@ -238,11 +236,27 @@ public class Game
         System.out.println("These are their stats:");
         System.out.println(possibleRecruit.detailedPrint());
 
-        prompt = "Would you accept them into your party?";
+        hireCharacter(goldCost, possibleRecruit);
     }//end method offerRecruit
 
-    private void hireCharacter()
+    private void hireCharacter(int goldPrice, Character recruit)
     {
+        //has the checks if player can hire character
+        String prompt;
+
+        if(playerParty.getGold() < goldPrice)
+        {
+            System.out.println("You're too broke. Get more money.");
+        }
+        else
+        {
+            prompt = "Will you hire them? ";
+
+            if(CommonMethods.promptYes(prompt))
+            {
+                playerParty.addCharacter(recruit);
+            }
+        }
 
     }//end method hireCharacter
 
@@ -300,3 +314,4 @@ public class Game
 
 
 }
+

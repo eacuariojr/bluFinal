@@ -1,5 +1,5 @@
 /*
-    Erwin Aquario, Victor Gallardo and Kevin Raya
+    Erwin Aquario, Victor Gallardo
     May 15, 2019
     Party.java
     Dependencies: Character.java, Projectile.java
@@ -114,6 +114,11 @@ public class Party
 
         return partyData;
     }//end method writeData
+
+    public void addCharacter(Character recruit)
+    {
+
+    }//end method addCharacter
 
     //****************GETTERS & SETTERS****************
     public ArrayList<Character> getMembers()
