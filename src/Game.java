@@ -87,6 +87,7 @@ public class Game
 
         printMainMenu();
 
+        //redirects to different methods based on user's choice
         switch (CommonMethods.getChoice(5))
         {
             case 1: trainOption();
@@ -215,6 +216,7 @@ public class Game
         int goldCost;
         double goldWorkVariable;
         final double GOLD_VARIANCE = 0.2;
+        String prompt;
 
         //determines the random gold cost
         //formula taken for Character.java's randomStats method (0.8 - 1.2 (1 +- GOLD_VARIANCE))
@@ -236,9 +238,13 @@ public class Game
         System.out.println("These are their stats:");
         System.out.println(possibleRecruit.detailedPrint());
 
+        prompt = "Would you accept them into your party?";
     }//end method offerRecruit
 
+    private void hireCharacter()
+    {
 
+    }//end method hireCharacter
 
     //****************GENERAL METHODS****************
     private void nextDay()

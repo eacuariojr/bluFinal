@@ -33,6 +33,7 @@ public class CommonMethods
         catch (InputMismatchException e)
         {
             System.out.print("Must enter number. ");
+            input.nextLine();
         }
 
         //loops until there's a choice inside bounds
@@ -51,6 +52,7 @@ public class CommonMethods
             catch (InputMismatchException e)
             {
                 System.out.print("Must enter number. ");
+                input.nextLine();
                 //the full error message is "Must enter number. Invalid choice, try again."
             }
         }
