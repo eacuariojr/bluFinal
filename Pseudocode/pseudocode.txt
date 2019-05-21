@@ -7,12 +7,10 @@ save file is deleted
 **************************************
 
 *********SAVES.TXT*********
-
 && <save name> -- <days>
 ** <party gold>
 -- <char name> -- <strength> -- <speed> -- <endurance> -- <health> -- <notIncapacitated> -- <isAlive>
 -- (duplicate for more characters)
-
 
 *********SCOREBOARD.TXT*********
 <name> -- <score>

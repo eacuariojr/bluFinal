@@ -85,7 +85,7 @@ public class BluFinal //start BluFinal class
 
     private static void loadGame() //start loadGame method
     {
-       ArrayList <String> saveFiles = new ArrayList<>();
+        ArrayList <String> saveFiles = new ArrayList<>(); //array list that stores user saves and grows as you add to it
 
         //open file Saves.txt
         String filename = "Saves.txt"; //create a String variable and initialize it with Saves.txt
