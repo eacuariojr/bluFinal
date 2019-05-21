@@ -6,6 +6,8 @@
     Credit: none
 */
 //----------------------------------------------------------------------------------------------------------------------
+import java.util.Random;
+
 public class Character
 {
     private String name;
@@ -21,11 +23,14 @@ public class Character
     //this constructor creates a player's starter character with a certain name
     public Character(String name)
     {
+        final int DEFAULT_BASE = 20;    //the default base stats constant
+
         this.name = name;
-        strength = 20;
-        speed = 20;
-        endurance = 20;
-        health = 100;
+        strength = DEFAULT_BASE;
+        speed = DEFAULT_BASE;
+        endurance = DEFAULT_BASE;
+        //all new characters are alive and at max health
+        health = MAX_HEALTH;
         notIncapacitated = true;
         isAlive = true;
     }
@@ -33,7 +38,12 @@ public class Character
     //receives a double to influence random stats
     public Character(double statMultiplier)
     {
-
+        name = randomName();
+        randomStats(statMultiplier);
+        //all new characters are alive and max health
+        health = MAX_HEALTH;
+        notIncapacitated = true;
+        isAlive = true;
     }
 
     //used to load a character
@@ -49,6 +59,53 @@ public class Character
         this.isAlive = isAlive;
     }
 
+
+    //****************RANDOM CHARACTER METHODS****************
+    private String randomName()
+    {
+        //in the future I'd like random name to accept a double which influences what names
+        //could be chosen
+        Random randGen = new Random();
+
+        //list of random names
+        String[] randomName = {"Philbert", "Truffles", "Wombowski", "Panini", "Ruffleo",
+                "Ruskin", "Hubert", "Bob", "Javaman", "Qwerty", "Kevin",
+                "Victor", "Jessica", "Erwin", "E.I.E.I.O.", "Vagrant",
+                "XYZZY", "Krogan", "Banani", "Albin",
+                "Brfxxccxxmnpcccclllmmnprxvclmnckssqlbb11116"};  //last name is pronounced "Albin"
+
+        return randomName[randGen.nextInt(randomName.length)];
+    }
+
+    private void randomStats(double statMultiplier)
+    {
+        //this method assists the constructor. It creates 3 random stats for a character based on the multiplier
+        Random randGen = new Random();
+        final int BASE_STAT  = 30;
+        final double STAT_VARIANCE = 0.2;
+        double randomStatValue;
+
+        //fun math huh :^)
+        //generates a random number in the range  0.8 - 1.2 (1 +- STAT_VARIANCE)
+        randomStatValue = (((randGen.nextDouble() * 2) - 1) * STAT_VARIANCE) + 1;
+        //then gets that value, and multiplies base stat value and the stat multiplier from the parameter
+        randomStatValue *= BASE_STAT;
+        randomStatValue *= statMultiplier;
+
+        strength = (int) randomStatValue;
+
+
+        //repeat the above code for speed and endurance
+        randomStatValue = (((randGen.nextDouble() * 2) - 1) * STAT_VARIANCE) + 1;
+        randomStatValue *= BASE_STAT;
+        randomStatValue *= statMultiplier;
+        speed = (int)randomStatValue;
+
+        randomStatValue = (((randGen.nextDouble() * 2) - 1) * STAT_VARIANCE) + 1;
+        randomStatValue *= BASE_STAT;
+        randomStatValue *= statMultiplier;
+        endurance = (int)randomStatValue;
+    }
 
     //****************METHODS****************
 
@@ -79,7 +136,6 @@ public class Character
             notIncapacitated = false;
         }
     }
-
 
     public String simplePrint()
     {
@@ -116,8 +172,6 @@ public class Character
 
         return characterData;
     }//end method writeData
-
-    //****************RANDOM CHARACTER METHODS****************
 
 
     //****************GETTERS & SETTERS****************

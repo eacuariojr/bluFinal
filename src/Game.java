@@ -6,7 +6,6 @@
     Credit: none
 */
 //----------------------------------------------------------------------------------------------------------------------
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game
@@ -63,6 +62,12 @@ public class Game
     //constructor when loading in a game
     public Game(Scanner fileReader)
     {
+        //fileReader should already be right before the filename of the save being loaded
+
+        saveName = fileReader.next();   fileReader.next();  //reads save name and skips the "--"
+        daysPassed = fileReader.nextInt();
+        //passes the scanner into Party's constructor
+        playerParty = new Party(fileReader);
 
     } //end loading constructor
 
@@ -71,7 +76,10 @@ public class Game
     //Game can only start in this way
     public void start()
     {
-        System.out.println(writeData());
+        for (int i = 0; i < 20; i++)
+        {
+
+        }
     }//end method start
 
     private void nextDay()

@@ -106,8 +106,7 @@ PARTY CLASS
     Three constructors:
         Constructor with one Character as a parameter (when creating new game)
         A constructor for loading game (takes a scanner as a parameter)
-        A constructor that takes a string that creates a
-        random enemy party
+        A constructor that takes a double as a parameter and creates a random party
 
     methods:
         A way to check gold, add gold and to lose gold:
