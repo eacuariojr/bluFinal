@@ -48,10 +48,13 @@ public class Party
             health = fileReader.nextDouble(); fileReader.next();
             notIncapacitated = fileReader.nextBoolean(); fileReader.next();
             isAlive = fileReader.nextBoolean();
-            fileText = fileReader.next();
 
             members.add(new Character(charName, strength, speed, endurance,
                                       health, notIncapacitated, isAlive));
+            if (!fileReader.hasNext())
+                break;
+            else
+                fileText = fileReader.next();
         }
     } //end loading game constructor
 
