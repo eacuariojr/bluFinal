@@ -1,5 +1,5 @@
 /*
-    Erwin Aquario, Victor Gallardo and Kevin Raya
+    Erwin Aquario, Victor Gallardo
     May 15, 2019
     Character.java
     Dependencies: Projectile.java
