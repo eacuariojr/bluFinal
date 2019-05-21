@@ -2,7 +2,7 @@
     Erwin Aquario, Victor Gallardo and Kevin Raya
     May 15, 2019
     Game.java
-    Dependencies: Character.java, Party.java, Projectile.java
+    Dependencies: CommonMethods.java, Character.java, Party.java, Projectile.java
     Credit: none
 */
 //----------------------------------------------------------------------------------------------------------------------
@@ -24,32 +24,24 @@ public class Game
         Scanner input = new Scanner(System.in);
         boolean userConfirm = false;
         char userResponse;
+        String prompt;
 
         //asks for name of new character
         System.out.print("Enter starting character name: ");
         saveName = input.next();//works because "new game" save file name is the same as the first character
         input.nextLine();
 
-        //asks for confirmation until a name is confirmed
-        while (!userConfirm)
-        {
-            System.out.printf("Your starting character will be named %s.", saveName);
-            //asks user for confirmation
-            System.out.print(" Is that okay? (Y) or (N): ");
-            userResponse = input.next().toUpperCase().charAt(0);
+        //creates prompt
+        prompt = "Your starting character will be named " + saveName + ".\nIs that okay? ";
 
-            //evaluates user response
-            switch(userResponse)
-            {
-                case 'Y': userConfirm = true;
-                        break;
-                case 'N': //makes user name character again
-                    System.out.print("Enter starting character name: ");
-                    saveName = input.next();
-                    input.nextLine();
-                        break;
-                default: System.out.println("Invalid response. Try again.");
-            }
+        //asks for confirmation until a name is confirmed
+        while (!CommonMethods.promptYes(prompt))
+        {
+            //gets a new name if user responds no, and recreate prompt
+            System.out.print("Enter starting character name: ");
+            saveName = input.next();
+
+            prompt = "Your starting character will be named " + saveName + ".\nIs that okay? ";
         }
 
         //after a character name is settled, starts creating character and party
@@ -95,7 +87,7 @@ public class Game
 
         printMainMenu();
 
-        switch (getChoice(4))
+        switch (CommonMethods.getChoice(5))
         {
             case 1: trainOption();
                 break;
@@ -105,6 +97,8 @@ public class Game
                 break;
             case 4: System.out.println(playerParty.detailedPrint());
                     startDay(); //oooooh, recursion!
+                break;
+            case 5: //quit game
                 break;
             default:
         }
@@ -118,7 +112,7 @@ public class Game
 
         printTrainMenu();
 
-        switch (getChoice(4))
+        switch (CommonMethods.getChoice(4))
         {
             case 1: train("Strength");
                     break;
@@ -192,7 +186,7 @@ public class Game
         printRecruitMenu();
 
         //gets user's choice after the menu
-        switch(getChoice(5))
+        switch(CommonMethods.getChoice(5))
         {
             case 1: offerRecruit(50);
                 break;
@@ -274,6 +268,7 @@ public class Game
         System.out.println("2.) Explore");
         System.out.println("3.) Recruit");
         System.out.println("4.) Check Status");
+        System.out.println("5.) Quit Game");
     }//end method printMainMenu
 
     private void printTrainMenu()
@@ -296,47 +291,6 @@ public class Game
         System.out.println("5.) Go Back");
     }//end method printRecruitMenu
 
-    private int getChoice(int maxChoice)
-    {
-        //this method returns an integer within bounds [1, maxChoice]
-        //based off of the user's choice
 
-        //housekeeping
-        int choice = -1;
-        Scanner input = new Scanner(System.in);
-
-        //code to prime loop
-        try
-        {
-            System.out.print("\nEnter your choice : ");
-            choice = input.nextInt();
-        }
-        catch (InputMismatchException e)
-        {
-            System.out.print("Must enter number. ");
-        }
-
-        //loops until there's a choice inside bounds
-        while(choice < 0 || choice > maxChoice)
-        {
-            //prints error message for out of bounds
-            System.out.println("Invalid choice, try again.");
-
-            //catches mismatch errors.
-            try
-            {
-                System.out.print("\nEnter your choice : ");
-                choice = input.nextInt();
-
-            }
-            catch (InputMismatchException e)
-            {
-                System.out.print("Must enter number. ");
-                //the full error message is "Must enter number. Invalid choice, try again."
-            }
-        }
-
-        return choice;
-    }//end method getChoice
 
 }
