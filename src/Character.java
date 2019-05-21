@@ -44,8 +44,6 @@ public class Character
         health = MAX_HEALTH;
         notIncapacitated = true;
         isAlive = true;
-
-        System.out.println(detailedPrint());
     }
 
     //used to load a character
@@ -108,7 +106,7 @@ public class Character
         randomStatValue *= statMultiplier;
         endurance = (int)randomStatValue;
     }
-    
+
     //****************METHODS****************
 
     //this method is used when a character attacks another character
