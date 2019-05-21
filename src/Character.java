@@ -38,6 +38,9 @@ public class Character
     //receives a double to influence random stats
     public Character(double statMultiplier)
     {
+        //the double influences stats. A value of 1 has an average of 20 on each stat
+        //when statMultiplier = 5, the average stats are 100
+
         name = randomName();
         randomStats(statMultiplier);
         //all new characters are alive and max health
@@ -81,7 +84,7 @@ public class Character
     {
         //this method assists the constructor. It creates 3 random stats for a character based on the multiplier
         Random randGen = new Random();
-        final int BASE_STAT  = 30;
+        final int BASE_STAT  = 20;
         final double STAT_VARIANCE = 0.2;
         double randomStatValue;
 
