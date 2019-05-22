@@ -1,5 +1,5 @@
 /*
-    Erwin Aquario, Victor Gallardo and Kevin Raya
+    Erwin Aquario, Victor Gallardo
     May 15, 2019
     BluFinal.java
     Dependencies: Game.java, Party.java, Character.java, Projectile.java
@@ -185,3 +185,5 @@ public class BluFinal //start BluFinal class
         System.exit(0); //terminates program
     } //end quitGame method
 } //end BluFinal class
+
+
