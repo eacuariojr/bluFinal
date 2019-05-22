@@ -90,7 +90,7 @@ public class Game
         {
             case 1: trainOption();
                 break;
-            case 2: //explore
+            case 2: exploreOption();
                 break;
             case 3: recruitOption();
                 break;
@@ -177,6 +177,10 @@ public class Game
     }//end method calculateTrainGain
 
     //****************EXPLORING METHODS****************
+    private void exploreOption()
+    {
+        
+    }// end method exploreOption
 
 
     //****************RECRUITING METHODS****************
@@ -311,7 +315,10 @@ public class Game
         System.out.println("5.) Go Back");
     }//end method printRecruitMenu
 
+    private void printExploreMenu()
+    {
 
+    }//end method printExploreMenu()
 
 }
 
