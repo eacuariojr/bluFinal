@@ -120,8 +120,37 @@ public class Party
 
     public void addCharacter(Character recruit)
     {
+        members.add(recruit);
 
+        if (members.size() > MAX_MEMBERS)
+        {
+            //if party size exceeds max members, then a choice is presented on who to kick out
+            int kickSelection;
+            String prompt;
+
+            //loops until user selects a character to kick
+            do
+            {
+                //displays menu and gets a choice
+                kickMenu();
+                kickSelection = CommonMethods.getChoice(members.size());
+                prompt = "You chose to kick " + members.get(kickSelection - 1).getName() + "\n" +
+                         "Is this correct? ";
+            } while(!CommonMethods.promptYes(prompt));
+        }
     }//end method addCharacter
+
+    private void kickMenu()
+    {
+        System.out.println("Your party has too many members!");
+        System.out.println("Choose one to kick out\n");
+
+        for (int i = 0; i < members.size(); i++)
+        {
+            System.out.println( (i + 1) + ".) " + members.get(i).getName());
+        }
+
+    }//end method kickMenu
 
     //****************GETTERS & SETTERS****************
     public ArrayList<Character> getMembers()

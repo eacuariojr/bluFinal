@@ -179,7 +179,7 @@ public class Game
     //****************EXPLORING METHODS****************
     private void exploreOption()
     {
-        
+
     }// end method exploreOption
 
 
@@ -248,9 +248,12 @@ public class Game
         //has the checks if player can hire character
         String prompt;
 
+
         if(playerParty.getGold() < goldPrice)
         {
-            System.out.println("You're too broke. Get more money.");
+            //lack of money means that you just lose the day
+            System.out.println("You're too broke. You just wasted your time.");
+            CommonMethods.pauseProgram();
         }
         else
         {
@@ -258,7 +261,9 @@ public class Game
 
             if(CommonMethods.promptYes(prompt))
             {
+                //adds character to party and removes cost from party
                 playerParty.addCharacter(recruit);
+                playerParty.changeGold((goldPrice * -1));
             }
         }
 
