@@ -6,9 +6,11 @@
     Credit: none
 */
 //----------------------------------------------------------------------------------------------------------------------
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 public class Game
 {
@@ -97,9 +99,8 @@ public class Game
             case 4: System.out.println(playerParty.detailedPrint());
                     startDay(); //oooooh, recursion!
                 break;
-            case 5: //quit game
+            case 5: quit();
                 break;
-            default:
         }
 
     }//end method startDay
@@ -282,6 +283,7 @@ public class Game
 
     private void hireCharacter(int goldPrice, Character recruit)
     {
+        //give the player the option to hire the offered recruit
         //has the checks if player can hire character
         String prompt;
 
@@ -305,6 +307,84 @@ public class Game
         }
 
     }//end method hireCharacter
+
+    //****************QUIT METHODS****************
+    private void quit()
+    {
+        //this method handles all the procedures necessary when quitting the game
+
+        //gets all saves inside Saves.txt
+        ArrayList<Game> saves = recordSaves();
+
+        //removes the any save files that have the same name (should only be a problem with new games)
+        for (int i = 0; i < saves.size(); i++)
+        {
+            if (saves.get(i).getSaveName().equals(saveName))
+            {
+                //if any file has the same name as this object, remove that object from ArrayList
+                saves.remove(i);
+            }
+        }
+
+        //starts saving process
+        try
+        {
+            //creates objects required to write into file
+            FileWriter fWriter = new FileWriter("Saves.txt", false);
+            Formatter output = new Formatter(fWriter);
+
+            //starts writing all the saves
+            for (int i = 0; i < saves.size(); i++)
+            {
+                output.format(saves.get(i).writeData());
+            }
+            //finally, writes this object's save data
+            output.format(writeData());
+
+            //and close
+            output.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println(e);
+            System.out.println("Could not save scores.");
+            CommonMethods.pauseProgram();
+        }
+
+        System.out.println("Progress saved. Goodbye");
+        CommonMethods.pauseProgram();
+        System.exit(0); //maybe there's a more elegant solution, but time is running out :^(
+    }//end method quit
+
+    private ArrayList<Game> recordSaves()
+    {
+        //this method reads all the saves and stores them as game objects in an ArrayList
+
+        //creates file and ArrayList
+        File myFile = new File("Saves.txt");
+        ArrayList<Game> saveFiles = new ArrayList<>();
+
+        //attempts to write all save data into ArrayList
+        try
+        {
+            //creates scanner and primes it for recording
+            Scanner fileStream = new Scanner(myFile);
+            fileStream.next();  //the first file needs to get past the "&&" for it to work properly
+
+            while (fileStream.hasNext())
+            {
+                //calls upon loading constructor to create objects from scanner
+                saveFiles.add(new Game(fileStream));
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("\n\n***************ERROR***************\n" + e);
+            CommonMethods.pauseProgram();
+        }
+
+        return saveFiles;
+    }//end method recordSaves
 
     //****************GENERAL METHODS****************
     private void nextDay()
@@ -371,5 +451,10 @@ public class Game
         System.out.println("4.) Go Back");
     }//end method printExploreMenu()
 
+
+    public String getSaveName()
+    {
+        return saveName;
+    }
 }
 

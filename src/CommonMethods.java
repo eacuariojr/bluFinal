@@ -57,6 +57,7 @@ public class CommonMethods
             }
         }
 
+        input.nextLine();   //resets scanner for pauseProgram method
         return choice;
     }//end method getChoice
 
