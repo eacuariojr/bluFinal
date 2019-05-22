@@ -310,6 +310,11 @@ public class Game
     private void nextDay()
     {
         daysPassed++;
+
+        for (int i = 0; i < playerParty.getMembers().size(); i++)
+        {
+            playerParty.getMember(i).heal();
+        }
     }//end method nextDay
 
     //this method is used when writing the entire game into a save file

@@ -176,6 +176,19 @@ public class Character
         return characterData;
     }//end method writeData
 
+    public void heal()
+    {
+        final double BASE_HEAL = 20.0;
+
+        //adds heal
+        health += 20;
+
+        //then checks if character is above max health
+        if (health > MAX_HEALTH)
+        {
+            health = MAX_HEALTH;
+        }
+    }//end method heal
 
     //****************GETTERS & SETTERS****************
     public String getName()
