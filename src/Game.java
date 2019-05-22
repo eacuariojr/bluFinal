@@ -179,9 +179,46 @@ public class Game
     //****************EXPLORING METHODS****************
     private void exploreOption()
     {
+        printExploreMenu();
+
+        //gets user's choice after the menu
+        switch(CommonMethods.getChoice(4))
+        {
+            case 1: generateEncounter(0.8);
+                break;
+            case 2: generateEncounter(1.2);
+                break;
+            case 3: generateEncounter(3.0);
+                break;
+            case 4: startDay();
+                break;
+        }
 
     }// end method exploreOption
 
+    private void generateEncounter(double encounterModifier)
+    {
+        //create new random party
+        Party enemyParty = new Party(encounterModifier);
+
+        System.out.println("You find an enemy party!");
+        System.out.println("Here are their stats");
+        CommonMethods.pauseProgram();
+
+        System.out.println(enemyParty.detailedPrint());
+
+        //asks user if they want to fight or not
+        String prompt = "Do you want to fight them?";
+        if(CommonMethods.promptYes(prompt))
+        {
+            playerParty.attackParty(enemyParty);
+        }
+        else
+        {
+            System.out.println("You manage to escape.");
+            CommonMethods.pauseProgram();
+        }
+    }//end method generateEnounter
 
     //****************RECRUITING METHODS****************
     private void recruitOption()
@@ -322,7 +359,11 @@ public class Game
 
     private void printExploreMenu()
     {
-
+        System.out.println("What do you want to explore?");
+        System.out.println("1.) Noobie Nook");
+        System.out.println("2.) Macho Mills");
+        System.out.println("3.) Benny's Basement");
+        System.out.println("4.) Go Back");
     }//end method printExploreMenu()
 
 }
