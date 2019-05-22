@@ -26,11 +26,9 @@ public class BluFinal //start BluFinal class
         {
             validCommand = true;
 
-            try //attempt this block of code
-            {
                 do {
                     printMenu(); //printMenu method prints menu
-                    choice = getChoice(); //initialize choice with getChoice
+                    choice = CommonMethods.getChoice(4); //initialize choice with getChoice
 
                     switch (choice) //start switch statement
                     {
@@ -51,13 +49,7 @@ public class BluFinal //start BluFinal class
                             break;
                     } //end switch statement
                 } while(choice != 4);
-            }
-            catch(InputMismatchException error) //throw exception if input does not match
-            {
-                input.nextLine(); //clear the rest of the line
-                validCommand = false; //set to false if exception is thrown
-                System.out.println("Invalid command. Try again:");
-            }
+
         } while(!validCommand); //do while valid command is not true
     } //end main method
 
@@ -69,13 +61,6 @@ public class BluFinal //start BluFinal class
         System.out.println("3.Scoreboard");
         System.out.println("4.Quit Game");
     } //end printMenu method
-
-    private static int getChoice() //start getChoice method
-    {
-        System.out.print("\nEnter your choice: ");
-        int choice = input.nextInt();
-        return choice;
-    } //end getChoice method
 
     private static void newGame() //start newGame method
     {
